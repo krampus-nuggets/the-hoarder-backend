@@ -6,3 +6,6 @@ const autotrader = require("./modules/AutoTrader");
 // Create Express Application
 const app = express();
 
+// Mount middleware to PATH
+app.use("/autotrader", autotrader);
+
