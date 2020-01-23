@@ -21,7 +21,7 @@ router.get("/", async function (req, res){
 
     try {
     // START - Puppeteer Evaluation [Get data by selector]
-    let carData = await page.evaluate(() => {
+        carData = await page.evaluate(() => {
         let cars = [];
         // Add all car cards with given selector to data[Array]
         let data = document.querySelectorAll("div.e-available");
