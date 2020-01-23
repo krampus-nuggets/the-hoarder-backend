@@ -18,6 +18,9 @@ const autotrader = require("./modules/AutoTrader");
 // Sentry Init
 Sentry.init({ dsn: 'https://0294800f6353458981e93ee9fbc10798@sentry.io/1894799' });
 
+// Sentry Request Handler
+app.use(Sentry.Handlers.requestHandler());
+
 
 // Mount middleware to PATH
 app.use("/autotrader", autotrader);
