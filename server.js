@@ -8,14 +8,27 @@ Role: Backend API
 
 // START - Imports
 const express = require("express");
+// Create Express Application
+const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+const Sentry = require("@sentry/node");
 const autotrader = require("./modules/AutoTrader");
 // END
 
-// Create Express Application
-const app = express();
+// START - Sentry Init
+// Sentry Init
+Sentry.init({ dsn: process.env.SENTRY_DSN });
+
+// Sentry Request Handler
+app.use(Sentry.Handlers.requestHandler());
+
+// Sentry Error Handler
+app.use(Sentry.Handlers.errorHandler());
+// END
 
 // Mount middleware to PATH
 app.use("/autotrader", autotrader);
 
 // Listen for connections
-app.listen(4000);
+app.listen(process.env.AUTOTRADER_PORT);
