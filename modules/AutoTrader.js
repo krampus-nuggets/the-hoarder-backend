@@ -53,6 +53,9 @@ router.get("/", async function (req, res){
     res.end();
     // END
     
+    // Wait for browser session to close
+    await browser.close();
+});
 
 // Export Module
 module.exports = router;
