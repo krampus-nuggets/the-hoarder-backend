@@ -21,6 +21,9 @@ Sentry.init({ dsn: 'https://0294800f6353458981e93ee9fbc10798@sentry.io/1894799' 
 // Sentry Request Handler
 app.use(Sentry.Handlers.requestHandler());
 
+// Sentry Error Handler
+app.use(Sentry.Handlers.errorHandler());
+// END
 
 // Mount middleware to PATH
 app.use("/autotrader", autotrader);
