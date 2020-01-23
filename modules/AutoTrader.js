@@ -48,6 +48,10 @@ router.get("/", async function (req, res){
         return cars;
     });
     // END
+    } catch(err) {
+        Sentry.captureMessage("forEach[AutoTrader] => Loop Failed");
+        Sentry.captureException(err);
+    }
 
     // START - Set server response
     // Set JSON header to Response
