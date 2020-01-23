@@ -1,6 +1,7 @@
 // START - Imports
 const puppeteer = require("puppeteer");
 const express = require("express");
+const Sentry = require("@sentry/node");
 const router = express.Router();
 // END
 
