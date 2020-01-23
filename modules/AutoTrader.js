@@ -16,6 +16,10 @@ router.get("/", async function (req, res){
     // Go-To URL provided via Query String && waitUntil all traffic on network has stopped
     await page.goto(req.query.url, { waitUntil: "networkidle0" });
 
+    // ADD - Global variable for use outside of try-block
+    let carData;
+
+    try {
     // START - Puppeteer Evaluation [Get data by selector]
     let carData = await page.evaluate(() => {
         let cars = [];
