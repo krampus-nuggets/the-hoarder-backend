@@ -18,7 +18,7 @@ const autotrader = require("./modules/AutoTrader");
 
 // START - Sentry Init
 // Sentry Init
-Sentry.init({ dsn: 'https://0294800f6353458981e93ee9fbc10798@sentry.io/1894799' });
+Sentry.init({ dsn: process.env.SENTRY_DSN });
 
 // Sentry Request Handler
 app.use(Sentry.Handlers.requestHandler());
@@ -31,4 +31,4 @@ app.use(Sentry.Handlers.errorHandler());
 app.use("/autotrader", autotrader);
 
 // Listen for connections
-app.listen(4000);
+app.listen(process.env.AUTOTRADER_PORT);
