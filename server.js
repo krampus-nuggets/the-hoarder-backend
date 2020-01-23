@@ -8,6 +8,9 @@ Role: Backend API
 
 // START - Imports
 const express = require("express");
+// Create Express Application
+const app = express();
+const Sentry = require("@sentry/node");
 const autotrader = require("./modules/AutoTrader");
 // END
 
