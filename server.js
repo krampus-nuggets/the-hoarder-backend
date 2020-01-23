@@ -9,3 +9,5 @@ const app = express();
 // Mount middleware to PATH
 app.use("/autotrader", autotrader);
 
+// Listen for connections
+app.listen(4000);
