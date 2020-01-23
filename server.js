@@ -10,6 +10,8 @@ Role: Backend API
 const express = require("express");
 // Create Express Application
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 const Sentry = require("@sentry/node");
 const autotrader = require("./modules/AutoTrader");
 // END
