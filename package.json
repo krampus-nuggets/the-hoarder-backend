@@ -7,6 +7,7 @@
   "author": "@krampus-nuggets",
   "license": "MIT",
   "dependencies": {
+    "@sentry/node": "^5.11.1",
     "express": "^4.17.1",
     "puppeteer": "^2.0.0"
   }
