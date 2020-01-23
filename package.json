@@ -1,0 +1,13 @@
+{
+  "name": "the-hoarder-backend",
+  "version": "1.0.0",
+  "description": "Back-End Server for the-hoarder (https://github.com/krampus-nuggets/the-hoarder)",
+  "main": "server.js",
+  "repository": "#",
+  "author": "@krampus-nuggets",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^2.0.0"
+  }
+}
