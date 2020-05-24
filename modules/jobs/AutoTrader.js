@@ -1,12 +1,10 @@
 // START - Imports
 const puppeteer = require("puppeteer");
-const express = require("express");
 const Sentry = require("@sentry/node");
-const router = express.Router();
 // END
 
 // START - GET method for Puppeteer function @ Endpoint
-router.get("/", async function (req, res){
+module.exports = async function autoScraper(url){
     // Launch browser in headless mode
     const browser = await puppeteer.launch({ headless: true });
     // Create a new-tab within browser
@@ -14,7 +12,7 @@ router.get("/", async function (req, res){
     // Set browser-viewport dimensions
     await page.setViewport({ height: 1366, width: 768 });
     // Go-To URL provided via Query String && waitUntil all traffic on network has stopped
-    await page.goto(req.query.url, { waitUntil: "networkidle0" });
+    await page.goto(url, { waitUntil: "networkidle0" });
 
     // ADD - Global variable for use outside of try-block
     let carData;
@@ -52,19 +50,10 @@ router.get("/", async function (req, res){
         Sentry.captureMessage("forEach[AutoTrader] => Loop Failed");
         Sentry.captureException(err);
     }
-
-    // START - Set server response
-    // Set JSON header to Response
-    res.header("Content-Type",'application/json');
-    // Prettify and Respond with carData[{JSON}]
-    res.send(JSON.stringify(carData, null, 4));
-    // End Response
-    res.end();
-    // END
     
     // Wait for browser session to close
     await browser.close();
-});
 
-// Export Module
-module.exports = router;
+    // Return scraper data
+    return JSON.stringify(carData, null, 4);
+}
