@@ -13,7 +13,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const Sentry = require("@sentry/node");
-const autotrader = require("./modules/AutoTrader");
+const domain = require("./modules/handlers/Domains");
 // END
 
 // START - Sentry Init
@@ -27,8 +27,8 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.errorHandler());
 // END
 
-// Mount middleware to PATH
-app.use("/autotrader", autotrader);
+// Mount middleware to PATH [ AutoTrader ]
+app.use("/domain", domain);
 
 // Listen for connections
-app.listen(process.env.AUTOTRADER_PORT);
+app.listen(process.env.PORT);
